@@ -1,0 +1,115 @@
+╔════════════════════════════════════════════════════════════════════╗
+║  RUWA TECHNOLOGY LIMITED - go54.com DEPLOYMENT QUICK START GUIDE   ║
+╚════════════════════════════════════════════════════════════════════╝
+
+📋 STEP-BY-STEP DEPLOYMENT
+
+1️⃣ EXTRACT PACKAGE
+   unzip ruwa-go54-deploy.zip
+   cd Ruwa-Technology-Limited
+
+2️⃣ BUILD LOCALLY
+   npm install
+   npm run build
+   ✓ This creates the dist/ folder
+
+3️⃣ UPLOAD TO go54.com
+   Upload via FTP/SFTP/Dashboard:
+   - dist/
+   - server.js
+   - package.json
+   - Procfile
+   - .env.production
+   
+   DO NOT UPLOAD:
+   - node_modules/
+
+4️⃣ SET ENVIRONMENT VARIABLES
+   Log into go54.com dashboard → Environment Variables
+   
+   Add these:
+   NODE_ENV              = production
+   PORT                  = 3000
+   GEMINI_API_KEY        = YOUR_ACTUAL_KEY_HERE
+   APP_URL               = https://yourdomain.go54.com
+
+5️⃣ SET STARTUP COMMAND
+   In go54.com dashboard → Startup/Run Command:
+   
+   npm install && npm run build && node server.js
+
+6️⃣ DEPLOY/RESTART
+   Click Deploy or Restart button
+   Wait 1-2 minutes for startup
+
+7️⃣ VERIFY
+   Test: https://yourdomain.go54.com/health
+   Should return:
+   {"status":"ok", "environment":"production", ...}
+
+8️⃣ VISIT YOUR SITE
+   https://yourdomain.go54.com
+
+═══════════════════════════════════════════════════════════════════════
+
+🔑 GETTING YOUR GEMINI API KEY
+
+1. Visit: https://aistudio.google.com/app/apikey
+2. Click "Create API Key"
+3. Copy your key
+4. Paste into go54.com → GEMINI_API_KEY
+5. Restart server
+
+═══════════════════════════════════════════════════════════════════════
+
+✅ ENVIRONMENT VARIABLES CHECKLIST
+
+[ ] NODE_ENV = production
+[ ] PORT = 3000
+[ ] GEMINI_API_KEY = your_actual_key
+[ ] APP_URL = https://yourdomain.go54.com
+
+═══════════════════════════════════════════════════════════════════════
+
+🧪 TESTING AFTER DEPLOYMENT
+
+Health Check:
+https://yourdomain.go54.com/health
+
+Config Check:
+https://yourdomain.go54.com/api/config
+
+Your App:
+https://yourdomain.go54.com
+
+═══════════════════════════════════════════════════════════════════════
+
+❌ TROUBLESHOOTING
+
+Issue: App won't start
+Solution: 
+  - Check NODE_ENV=production is set
+  - Check PORT=3000 is set
+  - Run: npm install
+  - Check go54.com logs
+
+Issue: GEMINI_API_KEY error
+Solution:
+  - Get key from: https://aistudio.google.com/app/apikey
+  - Set in go54.com environment variables
+  - Restart server
+
+Issue: Static files not loading
+Solution:
+  - Verify dist/ folder is uploaded
+  - Run: npm run build on server
+  - Restart server
+
+═══════════════════════════════════════════════════════════════════════
+
+📞 NEED HELP?
+
+For go54.com issues → Contact go54.com support
+For deployment questions → Check GO54_DEPLOYMENT_INSTRUCTIONS.md
+
+═══════════════════════════════════════════════════════════════════════

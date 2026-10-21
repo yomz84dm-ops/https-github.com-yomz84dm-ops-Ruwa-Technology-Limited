@@ -1,0 +1,6 @@
+{
+  "name": "Ruwa Technologies Redesign & Platform",
+  "description": "Ruwa Technologies LTD — Commercial clean energy microgrids, Tier-1 solar & battery storage, EV fleet charging, and AgriTech processing solutions in Lagos, Nigeria.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
